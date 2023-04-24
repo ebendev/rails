@@ -110,6 +110,7 @@ module ActiveRecord
           sql << "USING #{index.using}" if supports_index_using? && index.using
           sql << "(#{quoted_columns(index)})"
           sql << "INCLUDE (#{quoted_include_columns(index.include)})" if supports_index_include? && index.include
+          sql << "NULLS #{index.nulls.to_s.humanize.upcase}" if index.nulls
           sql << "WHERE #{index.where}" if supports_partial_index? && index.where
 
           sql.join(" ")

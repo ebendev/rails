@@ -206,6 +206,10 @@ module ActiveRecord
         database_version >= 11_00_00 # >= 11.0
       end
 
+      def supports_nulls_not_distinct?
+        database_version >= 15_00_00
+      end
+
       def supports_expression_index?
         true
       end
